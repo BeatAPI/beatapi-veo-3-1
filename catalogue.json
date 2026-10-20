@@ -1,0 +1,209 @@
+[
+  {
+    "reference": "model:veo-3.1",
+    "kind": "model",
+    "id": "veo-3.1",
+    "version": "1",
+    "status": "available",
+    "readiness": "ready",
+    "title": "Veo 3.1",
+    "description": "Veo 3.1 generation capability",
+    "categories": [
+      "video"
+    ],
+    "tags": [
+      "video",
+      "generate"
+    ],
+    "input_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "aspect_ratio": {
+          "default": "16:9",
+          "enum": [
+            "16:9",
+            "9:16",
+            "auto"
+          ],
+          "type": "string"
+        },
+        "enable_translation": {
+          "type": "boolean"
+        },
+        "images": {
+          "items": {
+            "format": "uri",
+            "pattern": "^https://",
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "type": "array"
+        },
+        "model": {
+          "enum": [
+            "veo-3.1"
+          ],
+          "type": "string"
+        },
+        "prompt": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "type": "string"
+        },
+        "quality": {
+          "enum": [
+            "Quality",
+            "Fast",
+            "Lite"
+          ],
+          "type": "string"
+        },
+        "reference_images": {
+          "items": {
+            "format": "uri",
+            "pattern": "^https://",
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "type": "array"
+        },
+        "resolution": {
+          "default": "720p",
+          "enum": [
+            "720p",
+            "1080p",
+            "4k",
+            "4K"
+          ],
+          "type": "string"
+        },
+        "watermark": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "model",
+        "prompt"
+      ],
+      "type": "object",
+      "x-beatapi-rules": [
+        "images cannot be combined with reference inputs"
+      ]
+    },
+    "output_schema": {
+      "delivery": "hosted_url",
+      "properties": {
+        "media": {
+          "description": "The hosted result assets, in output order.",
+          "items": {
+            "properties": {
+              "mime_type": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "video"
+                ],
+                "type": "string"
+              },
+              "url": {
+                "format": "uri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "url",
+              "mime_type"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "r2_url": {
+          "deprecated": true,
+          "description": "Deprecated: read media[0].url. The primary asset's URL again — the video, else the first image, the same value as that media[].url — kept only for clients that read one URL.",
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "media"
+      ],
+      "type": "object"
+    },
+    "schema_hash": "f9b67171580fa07f",
+    "execution": {
+      "mode": "async",
+      "status_supported": true,
+      "result_location": "task",
+      "executable": true,
+      "recommended": true
+    },
+    "pricing": {
+      "unit": "video",
+      "price_usd": "0.15",
+      "tiers": [
+        {
+          "id": "veo-3.1-lite-720p",
+          "spec": "8 sec · Lite · 720p · audio",
+          "price_usd": "0.15"
+        },
+        {
+          "id": "veo-3.1-lite-1080p",
+          "spec": "8 sec · Lite · 1080p · audio",
+          "price_usd": "0.25"
+        },
+        {
+          "id": "veo-3.1-lite-4k",
+          "spec": "8 sec · Lite · 4k · audio",
+          "price_usd": "0.75"
+        },
+        {
+          "id": "veo-3.1-fast-720p",
+          "spec": "8 sec · Fast · 720p · audio",
+          "price_usd": "0.3"
+        },
+        {
+          "id": "veo-3.1-fast-1080p",
+          "spec": "8 sec · Fast · 1080p · audio",
+          "price_usd": "0.4"
+        },
+        {
+          "id": "veo-3.1-fast-4k",
+          "spec": "8 sec · Fast · 4k · audio",
+          "price_usd": "0.9"
+        },
+        {
+          "id": "veo-3.1-quality-720p",
+          "spec": "8 sec · Quality · 720p · audio",
+          "price_usd": "1.85"
+        },
+        {
+          "id": "veo-3.1-quality-1080p",
+          "spec": "8 sec · Quality · 1080p · audio",
+          "price_usd": "1.9"
+        },
+        {
+          "id": "veo-3.1-quality-4k",
+          "spec": "8 sec · Quality · 4k · audio",
+          "price_usd": "2.5"
+        }
+      ]
+    },
+    "versions": {
+      "catalog_version": "",
+      "contract_version": "1"
+    },
+    "validation": {
+      "state": "contract_tested",
+      "verified_at": "2026-09-14T00:00:00Z",
+      "evidence": [
+        "executable generation model contract"
+      ]
+    },
+    "price_key": "veo-3.1"
+  }
+]

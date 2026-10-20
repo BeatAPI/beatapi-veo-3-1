@@ -1,0 +1,136 @@
+[
+  {
+    "name": "capabilities_search",
+    "description": "Scoped by the BeatAPI family server at runtime.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "What the user wants, as platform + action in their own words, Chinese or English: \"\u5c0f\u7ea2\u4e66 \u641c\u7d22\u7b14\u8bb0\", \"B\u7ad9 \u89c6\u9891\u8bc4\u8bba\", \"instagram user posts\", \"image model\", \"\u51b3\u7b56\". Only a platform name (\"\u5c0f\u7ea2\u4e66\") returns an overview; leave it empty for the catalogue map."
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "model",
+            "data",
+            "workflow"
+          ],
+          "description": "Optional filter. model: text, image, video and decision models. data: social media and web data. workflow: multi-step media jobs."
+        },
+        "platform": {
+          "type": "string",
+          "description": "Optional platform filter, slug or name: xiaohongshu or \u5c0f\u7ea2\u4e66, douyin or \u6296\u97f3, tiktok, bilibili or B\u7ad9, weibo or \u5fae\u535a, x, instagram, youtube."
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50,
+          "default": 5,
+          "description": "Results per page, 1-50."
+        },
+        "cursor": {
+          "type": "string",
+          "description": "next_cursor from the previous reply, to get the next page."
+        },
+        "view": {
+          "type": "string",
+          "enum": [
+            "compact",
+            "full"
+          ],
+          "default": "compact",
+          "description": "compact: one short card per result. full: complete contracts; rarely needed, use capabilities_inspect on one reference instead."
+        },
+        "group_by": {
+          "type": "string",
+          "enum": [
+            "function"
+          ],
+          "description": "function: group the matches by what they do (search, content, comments, users, trends, feeds, commerce, live) with examples in each group."
+        }
+      }
+    }
+  },
+  {
+    "name": "capabilities_inspect",
+    "description": "Scoped by the BeatAPI family server at runtime.",
+    "inputSchema": {
+      "type": "object",
+      "required": [
+        "reference"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "description": "A reference copied exactly from capabilities_search results or from suggestions, such as data:xiaohongshu.app_v2.search_notes or model:jev-1.13-free. Never build one yourself."
+        }
+      }
+    }
+  },
+  {
+    "name": "capabilities_run",
+    "description": "Scoped by the BeatAPI family server at runtime.",
+    "inputSchema": {
+      "type": "object",
+      "required": [
+        "reference"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "description": "The inspected reference, copied exactly. For status and result, the same reference as the start."
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "start",
+            "status",
+            "result"
+          ],
+          "default": "start",
+          "description": "start: run it. status: check an async task (needs task_id; takes view like start). result: fetch a finished result again, free within 1 hour (needs request_id)."
+        },
+        "input": {
+          "type": "object",
+          "description": "For start: the input, following the inspected input_schema; unknown fields are rejected. Text models: {\"input\":\"<prompt or messages array>\"} plus optional instructions, max_output_tokens, temperature. JEV: {\"state\":\"<situation>\",\"questions\":{...}}."
+        },
+        "task_id": {
+          "type": "string",
+          "description": "For status: the task id an async start returned."
+        },
+        "request_id": {
+          "type": "string",
+          "description": "For result: the request_id a sync start returned."
+        },
+        "view": {
+          "type": "string",
+          "enum": [
+            "preview",
+            "full"
+          ],
+          "default": "preview",
+          "description": "preview: the result's main list lifted to items (max_items elements, each trimmed inside), long strings shortened, marked truncated with a result_ref. full: the whole result, which can be tens of kilobytes."
+        },
+        "max_items": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "With view preview: elements kept in items (default 10, at most 50).",
+          "maximum": 50
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Return only these paths. Paths starting items[] are read from each element of the result's list and come back as items; other paths are dotted from the result root, [] walks an array. Example: [\"items[].title\", \"items[].url\"]."
+        },
+        "idempotency_key": {
+          "type": "string",
+          "maxLength": 255,
+          "description": "A unique key per task, sent here as a top-level argument (not inside input). Reuse it only to retry the same start, so the retry does not run or charge twice."
+        }
+      }
+    }
+  }
+]

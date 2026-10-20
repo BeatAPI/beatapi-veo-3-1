@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-21",
+  "transport": "Streamable HTTP MCP",
+  "endpoint": "https://beatapi.io/mcp",
+  "connection_checks": [
+    "initialize accepted",
+    "tools/list exposes capabilities_search, capabilities_inspect and capabilities_run",
+    "model discovery and current contracts inspected",
+    "three async starts, same-task status polling, real media download and image decode"
+  ],
+  "tests": [
+    {
+      "model": "gpt-image-2.5-flare",
+      "mode": "text to image",
+      "input_specification": "1K tier, 1:1",
+      "actual_dimensions": "1254x1254",
+      "status": "succeeded",
+      "advertised_price_usd": "0.015",
+      "credits_settled": 0.015,
+      "credits_refunded": 0,
+      "bytes": 1904516,
+      "format": "PNG",
+      "sha256": "424cfd3425b4871e05dfb47814600bf8e48079747097d574e112adf460542816",
+      "file": "gpt-image-2.5-flare.png",
+      "download_and_decode_verified": true,
+      "visual_review": "Orange robot, turquoise watering can, green plant and blue background match the brief; no text or logo observed.",
+      "input_prompt": "A friendly small orange robot holding a turquoise watering can beside a single green potted plant, clean soft-blue studio background, simple product illustration, square composition, no text, no logos."
+    },
+    {
+      "model": "gpt-image-2.5-sunburst",
+      "mode": "text to image",
+      "input_specification": "1K tier, 1:1",
+      "actual_dimensions": "1254x1254",
+      "status": "succeeded",
+      "advertised_price_usd": "0.015",
+      "credits_settled": 0.015,
+      "credits_refunded": 0,
+      "bytes": 1802544,
+      "format": "PNG",
+      "sha256": "47625bc161987fdf18e251a4245e8868fe146acf7f6fe86b60715f7ffa1b105e",
+      "file": "gpt-image-2.5-sunburst.png",
+      "download_and_decode_verified": true,
+      "visual_review": "Blue cube, orange rectangular block and cream cylinder match the still-life brief; no text or logo observed.",
+      "input_prompt": "A minimal editorial still life of three smooth geometric blocks in cobalt blue, warm orange and pale cream, soft morning shadows on a light gray surface, square composition, no text, no logos."
+    },
+    {
+      "model": "nano-banana-2-lite",
+      "mode": "image editing",
+      "input_specification": "1K tier, 1:1",
+      "actual_dimensions": "1024x1024",
+      "status": "succeeded",
+      "advertised_price_usd": "0.02",
+      "credits_settled": 0.02,
+      "credits_refunded": 0,
+      "bytes": 1778093,
+      "format": "PNG",
+      "sha256": "91cf1555807a29b577aad7cba99e78ac8641c9cf88869bc168e2ca433336d4d5",
+      "file": "nano-banana-2-lite.png",
+      "download_and_decode_verified": true,
+      "visual_review": "Robot changed to lavender and watering can to yellow; plant, blue background and overall composition remain recognizable. This is a visual edit check, not a pixel-identical preservation claim.",
+      "input_prompt": "Edit this illustration: change the orange robot to lavender purple and change the turquoise watering can to sunny yellow. Keep the plant, composition, soft-blue background and illustration style unchanged. No text or logos."
+    }
+  ],
+  "total_advertised_price_usd": "0.05",
+  "total_credits_settled": "0.05",
+  "not_verified": [
+    "Grok Bot fresh installation and secure credential setup",
+    "native in-app task execution and file attachment",
+    "all remaining image models and input modes",
+    "any video generation, audio or video download",
+    "local reference uploads"
+  ],
+  "scope": "Direct MCP client tests. These are not native Grok Bot integration tests. No video tasks were started."
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "beatapi-veo-3-1",
+  "version": "0.1.0",
+  "description": "Create affordable 8 second videos with audio using Veo 3.1 Lite, Fast or Quality. From $0.15 at 720p. Connect your own BeatAPI key and confirm the price before generating.",
+  "author": {
+    "name": "BeatAPI",
+    "email": "support@beatapi.io",
+    "url": "https://beatapi.io"
+  },
+  "homepage": "https://beatapi.io/pricing",
+  "license": "MIT",
+  "keywords": [
+    "beatapi",
+    "grok-bot",
+    "veo-3-1",
+    "video"
+  ],
+  "repository": "https://github.com/BeatAPI/beatapi-veo-3-1"
+}

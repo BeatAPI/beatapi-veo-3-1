@@ -1,0 +1,12 @@
+{
+  "slug": "beatapi-veo-3-1",
+  "fresh_process": true,
+  "initialize": "pass",
+  "tools": 3,
+  "missing_key_fail_closed": "pass",
+  "own_key_live_discovery": "pass",
+  "model_count": 1,
+  "live_inspect": "pass",
+  "paid_starts": 0,
+  "native_grok_install": false
+}
