@@ -16,7 +16,7 @@ The client performed initialize, tools/list, discovery, inspect, paid start, sam
 
 The Nano Banana task used the first generated image's returned public URL as its reference. No local reference upload was performed. Visual inspection confirmed the requested lavender robot and yellow watering can. The GPT Image still life contains the requested three colored forms. These are functional checks, not a general quality benchmark.
 
-Unverified: fresh Grok Bot installation, host secure key setup, native agent tool selection and file attachment, other model variants, uploads and all video generation. Current contracts for all 18 family model IDs were inspected, which is distinct from generation on each model. The three video plugins have no video runtime pass from these image tests.
+Grok clone/install, host registration, tool discovery and missing-key behavior were subsequently checked; see GROK_APP_VERIFICATION.md. Secure key propagation, native paid execution/file attachment, other model variants, uploads and all video generation remain unverified. Current contracts for all 18 family model IDs were inspected, which is distinct from generation on each model. The three video plugins have no video runtime pass from these image tests.
 
 ## Stdio package checks, 2026-10-21
 
@@ -24,4 +24,8 @@ The bundled Python 3.10+ server passed 10 no-network unit checks covering MCP li
 
 A separate fresh-process stdio check with the owner's explicitly authorized Social Media credential passed live nonbillable discovery of this complete family and contract inspection. Without a credential, initialize/tools/list work locally, while a capability call fails closed without sending HTTP. No new paid task was started by these stdio connection checks. See stdio-connection-verification.json.
 
-The earlier three real image tests used a direct MCP HTTP client, not this new stdio process or a native Grok agent. Grok fresh-install and secure key entry remain pending; no video runtime pass is claimed. A key must be supplied to the MCP subprocess through a supported secure host facility; installation alone does not connect a paid account.
+The earlier three real image tests used a direct MCP HTTP client, not this new stdio process or a native Grok agent. Grok fresh-clone and empty-key host registration subsequently passed; secure key entry remains unverified; no video runtime pass is claimed. A key must be supplied to the MCP subprocess through a supported secure host facility; installation alone does not connect a paid account.
+
+## Grok host integration
+
+See [GROK_APP_VERIFICATION.md](GROK_APP_VERIFICATION.md) for the actual nonbillable application checks and the remaining secure-key/native-generation limitations.

@@ -26,6 +26,6 @@ Four skills cover getting started, models and prices, generation and delivery, a
 
 ## Verification
 
-See [VERIFICATION.md](VERIFICATION.md) for real image evidence, package checks and native-app checks as they are completed. Image tests do not certify every model or video generation. This is an independent BeatAPI integration.
+See [VERIFICATION.md](VERIFICATION.md) for real image evidence and package checks, and [GROK_APP_VERIFICATION.md](GROK_APP_VERIFICATION.md) for passed nonbillable Grok installation/host checks and their limits. Image tests do not certify every model or video generation. This is an independent BeatAPI integration.
 
 Run the nonbillable, no-network bridge checks with `python3 -m unittest discover -s tests`.
